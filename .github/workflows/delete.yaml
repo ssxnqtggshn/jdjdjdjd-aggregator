@@ -13,29 +13,25 @@
           #token: ${{ github.token }}
           #repository: ${{ github.repository }}
           #retain_days: 3
-
-
-
-
  name: Delete Workflow Runs
-on:
-  schedule:
-    - cron: "3 3 * * *"  # 每天凌晨3:03自动运行
-  workflow_dispatch:     # 允许手动触发
-    inputs:
-      retain_days:
-        description: 'Number of days to retain workflow runs (default: 3)'
-        required: false
-        default: '3'
+ on:
+   schedule:
+     - cron: "3 3 * * *"  # 每天凌晨3:03自动运行
+   workflow_dispatch:     # 允许手动触发
+     inputs:
+       retain_days:
+         description: 'Number of days to retain workflow runs (default: 3)'
+         required: false
+         default: '3'
 
-jobs:
-  del_runs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Delete old workflow runs
-        uses: GitRML/delete-workflow-runs@main
-        with:
-          token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          retain_days: ${{ inputs.retain_days || 3 }}  # 使用手动输入值或默认值3
+ jobs:
+   del_runs:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Delete old workflow runs
+         uses: GitRML/delete-workflow-runs@main
+         with:
+           token: ${{ github.token }}
+           repository: ${{ github.repository }}
+           retain_days: ${{ inputs.retain_days || 3 }}  # 使用手动输入值或默认值3
 
