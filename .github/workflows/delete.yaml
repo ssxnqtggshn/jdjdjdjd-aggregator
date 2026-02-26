@@ -2,7 +2,8 @@ name: Delete
 on:
   schedule:
     - cron: "20 3 * * *"
-
+  workflow_dispatch:      # <--- 加上这一行，就能手动运行了
+    # 这里可以留空，也可以按需添加一些输入参数
 jobs:
   del_runs:
     runs-on: ubuntu-latest
