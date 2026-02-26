@@ -12,5 +12,5 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          days-ago: 30 # 删除30天前的运行记录
+          days-ago: 3 # 删除3天前的运行记录
           keep-latest: 5 # 可选：始终保留最新的5次记录
