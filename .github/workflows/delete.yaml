@@ -1,7 +1,7 @@
 name: Delete
 on:
   schedule:
-    - cron: "20 3 * * *"
+    - cron: "10 */8 * * *"
   workflow_dispatch:      # <--- 加上这一行，就能手动运行了
     # 这里可以留空，也可以按需添加一些输入参数
 jobs:
@@ -14,4 +14,4 @@ jobs:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
           days-ago: 1 # 删除3天前的运行记录
-          keep-latest: 3 # 可选：始终保留最新的5次记录
+          keep-latest: 2 # 可选：始终保留最新的5次记录
